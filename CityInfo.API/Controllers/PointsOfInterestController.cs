@@ -34,7 +34,7 @@ namespace CityInfo.API.Controllers
             return Ok(Mapper.Map<IEnumerable<PointOfInterestDto>>(poiResults));
         }
 
-        [HttpGet("{cityId}/pointsofinterest/{id}", Name = "GetPointOfInterest")]
+        [HttpGet("{cityId}/pointsofinterest/{id}", Name = "GetPointOfInterest")] //add a name to this annotation to be referenced in "CreatedAtRoute"
         public IActionResult GetPointOfInterest(int cityId, int id)
         {
             if (!_cityInfoRepository.CityExists(cityId))
@@ -123,7 +123,7 @@ namespace CityInfo.API.Controllers
             return NoContent();
         }
 
-        //uses JSON Patch API
+        //******* uses JSON Patch API *******
         [HttpPatch("{cityId}/pointsofinterest/{id}")]
         public IActionResult PartiallyUpdatePointOfInterest(int cityId, int id, [FromBody] JsonPatchDocument<PointOfInterestUpdateDto> patchDoc)
         {

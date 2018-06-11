@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CityInfo.API.Controllers
 {
-    [Route("api/cities")]
+    [Route("api/cities")] //prepends this to beginning of all routes in this class
     public class CitiesController : Controller
     {
         private ICityInfoRepository _cityInfoRepository;
@@ -18,6 +18,7 @@ namespace CityInfo.API.Controllers
         {
             _cityInfoRepository = cityInfoRepository;
         }
+
         [HttpGet()]
         public IActionResult GetCities()
         {

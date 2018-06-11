@@ -21,6 +21,8 @@ namespace CityInfo.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //set up db connection
             var connString = Configuration["connectionStrings:cityInfoDBConnectionString"];
             services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(connString));
             services.AddScoped<ICityInfoRepository, CityInfoRepository>(); 
@@ -45,6 +47,7 @@ namespace CityInfo.API
 
             app.UseStatusCodePages();
 
+            //Use AutoMapper library (initialize the mappings you're planning to need)
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Entities.City, Models.CityWithoutPointsOfInterestDto>();

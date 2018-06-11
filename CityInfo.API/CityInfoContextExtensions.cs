@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CityInfo.API
 {
+    //This entire class is just used to seed data in the db using the ORM
     public static class CityInfoExtensions
     {
         public static void EnsureSeedDataForContext(this CityInfoContext context)
